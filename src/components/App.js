@@ -14,7 +14,7 @@ import Login from "./Login";
 import Footer from "./Footer";
 class App extends Component {
   componentDidMount() {
-    this.props.dispatch(handleInitialData());
+    this.props.handleInitialData();
   }
   render() {
     return (
@@ -76,4 +76,10 @@ function mapStateToProps({ authedUser }) {
   };
 }
 
-export default connect(mapStateToProps)(App);
+function mapDispatchToProps(dispatch) {
+  return {
+    handleInitialData: () => dispatch(handleInitialData()),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

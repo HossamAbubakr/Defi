@@ -11,7 +11,6 @@ class Question extends Component {
     return Math.round((votes / totalVotes) * 100);
   };
   handleChange = (e) => {
-    e.preventDefault();
     const element = e.target;
     this.setState({ option: element.value });
   };
@@ -20,7 +19,6 @@ class Question extends Component {
     e.preventDefault();
     const { dispatch, question } = this.props;
     dispatch(handleAnswerQuestion(question.id, this.state.option));
-    /*console.log(`Question ID: ${question.id}, Answer ID: ${this.state.option}`);*/
   };
   render() {
     if (this.props.not_found) {
