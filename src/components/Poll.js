@@ -45,12 +45,12 @@ function mapStateToProps({ authedUser, users, questions }) {
   const answeredQuestions = Object.values(questions)
     .filter((question) => userAnswers.includes(question.id)) //Verify if the questionID exists in the userAnswers
     .map((question) => Object.assign({}, question, { type: "answered" })) //Attach the type to the object
-    .sort((a, b) => a.timestamp - b.timestamp); //Sort by newest to oldest
+    .sort((a, b) => b.timestamp - a.timestamp); //Sort by newest to oldest
 
   const unAnsweredQuestions = Object.values(questions)
     .filter((question) => !userAnswers.includes(question.id))
     .map((question) => Object.assign({}, question, { type: "unanswered" }))
-    .sort((a, b) => a.timestamp - b.timestamp);
+    .sort((a, b) => b.timestamp - a.timestamp);
   return {
     answeredQuestions,
     unAnsweredQuestions,
