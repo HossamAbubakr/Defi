@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Route, Switch, Redirect } from "react-router-dom";
 import PollNav from "./PollNav";
@@ -30,6 +31,11 @@ class Poll extends Component {
     );
   }
 }
+
+Poll.propTypes = {
+  answeredQuestions: PropTypes.array.isRequired,
+  unAnsweredQuestions: PropTypes.array.isRequired,
+};
 
 function mapStateToProps({ authedUser, users, questions }) {
   //Extract all the users answers object keys not values as they are held in this format {QuestionID: Option}

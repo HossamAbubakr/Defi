@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { setAuthedUser } from "../actions/authedUser";
 import { withRouter } from "react-router-dom";
@@ -119,6 +120,12 @@ class Login extends Component {
     );
   }
 }
+
+Login.propTypes = {
+  formattedUsers: PropTypes.array.isRequired,
+  authedUser: PropTypes.string.isRequired,
+};
+
 function mapStateToProps({ users, authedUser }) {
   const formattedUsers = Object.values(users).map((user) => {
     return { id: user.id, name: user.name, password: user.password };

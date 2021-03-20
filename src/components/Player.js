@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export default function Player(props) {
   const { name, answers, questions, score, avatarURL } = props.player;
@@ -30,3 +31,7 @@ export default function Player(props) {
     </div>
   );
 }
+
+Player.propTypes = {
+  player: PropTypes.object.isRequired,
+};

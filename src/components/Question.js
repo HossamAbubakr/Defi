@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter, Redirect } from "react-router-dom";
 import { handleAnswerQuestion } from "../actions/questions";
@@ -72,6 +73,14 @@ class Question extends Component {
     );
   }
 }
+
+Question.propTypes = {
+  question: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  answered: PropTypes.bool.isRequired,
+  authedUser: PropTypes.string.isRequired,
+};
+
 function mapStateToProps({ questions, users, authedUser }, { match }) {
   const id = match.params.questiondID;
   const question = questions[id];
@@ -90,7 +99,6 @@ function mapStateToProps({ questions, users, authedUser }, { match }) {
   return {
     question,
     user,
-    id,
     answered,
     authedUser,
   };

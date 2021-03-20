@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Player from "./Player";
 class Leaderboard extends Component {
@@ -13,6 +14,10 @@ class Leaderboard extends Component {
     );
   }
 }
+
+Leaderboard.propTypes = {
+  players: PropTypes.array.isRequired,
+};
 
 function mapStateToProps({ users }) {
   // The answers are saved as an object. However, the questions are saved as an array

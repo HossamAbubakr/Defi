@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 class QuestionItem extends Component {
@@ -28,6 +29,12 @@ class QuestionItem extends Component {
     );
   }
 }
+
+QuestionItem.propTypes = {
+  user: PropTypes.object.isRequired,
+  question: PropTypes.object.isRequired,
+};
+
 function mapStateToProps({ users }, { question }) {
   const user = users[question.author];
   return {

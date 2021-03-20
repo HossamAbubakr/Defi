@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import { Route, Switch, Redirect } from "react-router-dom";
+import PropTypes from "prop-types";
 import LoadingBar from "react-redux-loading";
 import AppNav from "./AppNav";
 import Poll from "./Poll";
@@ -62,6 +63,12 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  loggedOut: PropTypes.bool.isRequired,
+};
+
 function mapStateToProps({ authedUser }) {
   return {
     loading: authedUser === null,

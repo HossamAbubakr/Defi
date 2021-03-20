@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { setAuthedUser } from "../actions/authedUser";
@@ -43,6 +44,11 @@ class AppNav extends Component {
     );
   }
 }
+
+AppNav.propTypes = {
+  user: PropTypes.object,
+  loggedOut: PropTypes.bool.isRequired,
+};
 
 function mapStateToProps({ authedUser, users }) {
   const user = users[authedUser];

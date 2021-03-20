@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import PropTypes from "prop-types";
 import QuestionsListItem from "./QuestionsListItem.js";
 
 class QuestionsList extends Component {
@@ -16,5 +16,9 @@ class QuestionsList extends Component {
     );
   }
 }
+
+QuestionsList.propTypes = {
+  questions: PropTypes.array.isRequired,
+};
 
 export default QuestionsList;
