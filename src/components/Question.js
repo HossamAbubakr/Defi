@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { withRouter, Redirect } from "react-router-dom";
+import { Link, withRouter, Redirect } from "react-router-dom";
 import { handleAnswerQuestion } from "../actions/questions";
 class Question extends Component {
   state = {
@@ -14,7 +14,6 @@ class Question extends Component {
     const element = e.target;
     this.setState({ option: element.value });
   };
-
   handleSubmit = (e) => {
     e.preventDefault();
     const { dispatch, question } = this.props;
@@ -30,6 +29,9 @@ class Question extends Component {
     return (
       <div className="question color-primary">
         <div className="question-header">
+          <Link to={answered ? "/poll/answered" : "/poll/unanswered"}>
+            <img src="/images/arrow-back.svg" alt="back" />
+          </Link>
           <p>{answered ? "Asked by " + user.name : user.name + " Asks"}</p>
         </div>
         <div className={`item-content${answered ? " answer-content" : ""}`}>
@@ -58,7 +60,7 @@ class Question extends Component {
               </form>
             ) : (
               <form onSubmit={this.handleSubmit}>
-                <input type="radio" id="optionOne" name="option" value="optionOne" onChange={this.handleChange} checked />
+                <input type="radio" id="optionOne" name="option" value="optionOne" onChange={this.handleChange} defaultChecked />
                 <label htmlFor="optionOne">{optionOne.text}</label>
                 <input type="radio" id="optionTwo" name="option" value="optionTwo" onChange={this.handleChange} />
                 <label htmlFor="optionTwo">{optionTwo.text}</label>
