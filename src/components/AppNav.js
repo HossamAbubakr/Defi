@@ -4,9 +4,10 @@ import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { setAuthedUser } from "../actions/authedUser";
 class AppNav extends Component {
-  handleCLick = (e) => {
+  handleCLick = () => {
     const { dispatch } = this.props;
     dispatch(setAuthedUser("LOGGED_OUT"));
+    this.setState({ dropDown: false });
   };
   render() {
     const { loggedOut, user } = this.props;
@@ -29,15 +30,11 @@ class AppNav extends Component {
             Leaderboard
           </NavLink>
           <li id="tab-user">
-            <span>
-              Hello, {loggedOut ? "Please Login" : user.name}
-              <img alt="avatar" src={loggedOut ? "/images/avatars/0.png" : `/images/avatars/${user.avatarURL}.png`} /> {!loggedOut && "▾"}
-            </span>
-            {!loggedOut && (
-              <div className="dropdown-content">
-                <p onClick={this.handleCLick}>Logout</p>
-              </div>
-            )}
+            Hello, {loggedOut ? "Please Login" : user.name}
+            <img alt="avatar" src={loggedOut ? "/images/avatars/0.png" : `/images/avatars/${user.avatarURL}.png`} /> {!loggedOut && "▾"}
+            <div className={loggedOut ? "dropdown-hidden" : "dropdown-content"}>
+              <p onClick={this.handleCLick}>Logout</p>
+            </div>
           </li>
         </ul>
       </div>
