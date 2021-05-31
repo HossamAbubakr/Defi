@@ -710,7 +710,7 @@ body {
 
 .login {
   margin: auto;
-  width: 600px;
+  width: 850px;
   overflow: auto;
   border-radius: 7px;
   background-color: var(--sub-color-primary-main);
